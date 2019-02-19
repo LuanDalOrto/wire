@@ -114,6 +114,9 @@ double Mixture::getMaxDensity() const {
 }
 
 int Mixture::components() const {
+	if(ptr_ == nullptr)
+		return 0;
+
 	return ptr_->num_components_;
 }
 
