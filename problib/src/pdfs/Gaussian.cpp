@@ -39,7 +39,10 @@
 
 using namespace pbl;
 
-Gaussian::Gaussian(int dim) : PDF(dim, PDF::GAUSSIAN), ptr_(0) {
+Gaussian::Gaussian(int dim) : PDF(dim, PDF::GAUSSIAN), ptr_(nullptr) {
+		arma::vec mu {0};
+		arma::mat cov {0};
+	ptr_ = new GaussianStruct(mu, cov);
 }
 
 Gaussian::Gaussian(const arma::vec& mu, const arma::mat& cov) : PDF(mu.n_elem, PDF::GAUSSIAN), ptr_(new GaussianStruct(mu, cov)) {
