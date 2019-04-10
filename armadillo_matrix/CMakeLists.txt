@@ -7,10 +7,6 @@ project(armadillo_matrix)
 find_package(catkin REQUIRED COMPONENTS
 )
 
-# find_package(PkgConfig REQUIRED)
-# pkg_check_modules(BLAS REQUIRED blas)
-# pkg_check_modules(find_package(LAPACK REQUIRED))
-
 find_package(LAPACK REQUIRED)
 
 ## The catkin_package macro generates cmake config files for your package
