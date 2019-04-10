@@ -39,29 +39,35 @@
 
 #include <armadillo>
 
-namespace pbl {
+#include <stdexcept>
+
+namespace pbl
+{
 
 typedef arma::vec Vector;
 
 typedef arma::mat Matrix;
 
-class Scalar : public arma::vec::fixed<1> {
+class Scalar : public arma::vec::fixed<1>
+{
 
 public:
-    Scalar(double x) {
-        (*this)(0) = x;
-    }
+	Scalar(double x)
+	{
+		(*this)(0) = x;
+	}
 };
 
-class Vector3 : public arma::vec3 {
+class Vector3 : public arma::vec3
+{
 
 public:
-	Vector3(double v0, double v1, double v2) {
+	Vector3(double v0, double v1, double v2)
+	{
 		(*this)(0) = v0;
 		(*this)(1) = v1;
 		(*this)(2) = v2;
 	}
-
 };
 
 //class Vector3 : public Eigen::Vector3d {
@@ -75,22 +81,39 @@ public:
 //
 //};
 
-class Vector4 : public arma::vec4 {
+class Vector4 : public arma::vec4
+{
 
 public:
-	Vector4(double v0, double v1, double v2, double v3) {
+	Vector4(double v0, double v1, double v2, double v3)
+	{
 		(*this)(0) = v0;
 		(*this)(1) = v1;
 		(*this)(2) = v2;
 		(*this)(3) = v3;
 	}
-
 };
 
-class Matrix3 : public arma::mat33 {
+class Vector128 : public arma::vec::fixed<128>
+{
+public:
+	template <typename T>
+	Vector128(T &&val)
+	{
+		if (val.size() != 128)
+			throw std::invalid_argument("Vector128: requires a list of size 128");
+
+		for (size_t i = 0; i < 128; ++i)
+			(*this)(i) = val[i];
+	}
+};
+
+class Matrix3 : public arma::mat33
+{
 
 public:
-	Matrix3(double m00, double m11, double m22) {
+	Matrix3(double m00, double m11, double m22)
+	{
 		this->zeros();
 		(*this)(0, 0) = m00;
 		(*this)(1, 1) = m11;
@@ -98,10 +121,12 @@ public:
 	}
 };
 
-class Matrix4 : public arma::mat44 {
+class Matrix4 : public arma::mat44
+{
 
 public:
-	Matrix4(double m00, double m11, double m22, double m33) {
+	Matrix4(double m00, double m11, double m22, double m33)
+	{
 		this->zeros();
 		(*this)(0, 0) = m00;
 		(*this)(1, 1) = m11;
@@ -110,7 +135,21 @@ public:
 	}
 };
 
+class Matrix128 : public arma::mat::fixed<128, 128>
+{
+public:
+	template <typename T>
+	Matrix128(T &&val)
+	{
+		if (val.size() != 128)
+			throw std::invalid_argument("Matrix128: requires a list of size 128");
+		this->zeros();
 
-}
+		for (size_t i = 0; i < 128; ++i)
+			(*this)(i, i) = val[i];
+	}
+};
+
+} // namespace pbl
 
 #endif /* DATATYPES_H_ */
