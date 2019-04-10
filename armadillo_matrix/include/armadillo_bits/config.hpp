@@ -1,6 +1,6 @@
 // Copyright (C) 2008-2011 NICTA (www.nicta.com.au)
 // Copyright (C) 2008-2011 Conrad Sanderson
-// 
+//
 // This file is part of the Armadillo C++ library.
 // It is provided without any warranty of fitness
 // for any purpose. You can redistribute this file
@@ -10,18 +10,16 @@
 // of the License or (at your option) any later version.
 // (see http://www.opensource.org/licenses for more info)
 
-
-
-// #define ARMA_64BIT_WORD
+#define ARMA_64BIT_WORD
 //// Uncomment the above line if you require matrices/vectors capable of holding more than 4 billion elements.
 //// Your machine and compiler must have support for 64 bit integers (eg. via "long" or "long long")
 
-// #define ARMA_USE_CXX11
+#define ARMA_USE_CXX11
 //// Uncomment the above line if you have a C++ compiler that supports the C++11 standard
 //// This will enable additional features, such as use of initialiser lists
 
 #if !defined(ARMA_USE_LAPACK)
-// #define ARMA_USE_LAPACK
+#define ARMA_USE_LAPACK
 //// Uncomment the above line if you have LAPACK or a fast replacement for LAPACK,
 //// such as Intel's MKL, AMD's ACML, or the Accelerate framework.
 //// LAPACK is required for matrix decompositions (eg. SVD) and matrix inverse.
@@ -49,7 +47,7 @@
 //// Uncomment the above line if your BLAS and LAPACK libraries have capitalised function names (eg. ACML on 64-bit Windows)
 
 #if !defined(ARMA_MAT_PREALLOC)
-  #define ARMA_MAT_PREALLOC 16
+#define ARMA_MAT_PREALLOC 16
 #endif
 //// This is the number of preallocated elements used by matrices and vectors;
 //// it must be an integer that is at least 1.
@@ -84,22 +82,22 @@
 // #define ARMA_NO_DEBUG
 
 #if defined(ARMA_DONT_USE_ATLAS)
-  #undef ARMA_USE_ATLAS
-  #undef ARMA_ATLAS_INCLUDE_DIR
+#undef ARMA_USE_ATLAS
+#undef ARMA_ATLAS_INCLUDE_DIR
 #endif
 
 #if defined(ARMA_DONT_USE_LAPACK)
-  #undef ARMA_USE_LAPACK
+#undef ARMA_USE_LAPACK
 #endif
 
 #if defined(ARMA_DONT_USE_BLAS)
-  #undef ARMA_USE_BLAS
+#undef ARMA_USE_BLAS
 #endif
 
 #if defined(ARMA_DONT_PRINT_LOGIC_ERRORS)
-  #undef ARMA_PRINT_LOGIC_ERRORS
+#undef ARMA_PRINT_LOGIC_ERRORS
 #endif
 
 #if defined(ARMA_DONT_PRINT_RUNTIME_ERRORS)
-  #undef ARMA_PRINT_RUNTIME_ERRORS
+#undef ARMA_PRINT_RUNTIME_ERRORS
 #endif
