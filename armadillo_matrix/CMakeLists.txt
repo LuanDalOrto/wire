@@ -5,9 +5,13 @@ project(armadillo_matrix)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
 )
 
+# find_package(PkgConfig REQUIRED)
+# pkg_check_modules(BLAS REQUIRED blas)
+# pkg_check_modules(find_package(LAPACK REQUIRED))
+
+find_package(LAPACK REQUIRED)
 
 ## The catkin_package macro generates cmake config files for your package
 ## Declare things to be passed to dependent projects
@@ -35,4 +39,4 @@ add_library(armadillo
         src/wrap_libs.cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(armadillo ${catkin_LIBRARIES})
+target_link_libraries(armadillo ${catkin_LIBRARIES} ${LAPACK_LIBRARIES})
