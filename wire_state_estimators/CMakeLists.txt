@@ -1,8 +1,7 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.3)
 project(wire_state_estimators)
 
-## Compile as C++11
-add_compile_options(-std=c++11)
+set(CMAKE_CXX_STANDARD 14)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
